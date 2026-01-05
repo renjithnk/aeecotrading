@@ -1,4 +1,4 @@
-name: SFTP Deploy
+name: ZIP Deploy
 
 on:
   push:
@@ -13,30 +13,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install lftp
+      - name: Create ZIP of site
         run: |
-          sudo apt-get update
-          sudo apt-get install -y lftp
+          zip -r site.zip ./ -x "*.git*" "*.github*" "node_modules/*" "README.md"
 
-      - name: Deploy to BigRock via SFTP
+      - name: Install SSH client
+        run: sudo apt-get update && sudo apt-get install -y openssh-client
+
+      - name: Upload and extract via SSH
         env:
-          SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
-          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+          SSH_USERNAME: ${{ secrets.SFTP_USERNAME }}
+          SSH_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
         run: |
-          lftp <<EOF
-          set sftp:auto-confirm yes
-          set net:timeout 20
-          set net:max-retries 2
-          set net:reconnect-interval-base 5
-          open -u "$SFTP_USERNAME","$SFTP_PASSWORD" sftp://redlotusleathers.com:22
-          mirror -R \
-            --only-newer \
-            --parallel=5 \
-            --exclude-glob .git* \
-            --exclude .github \
-            --exclude node_modules \
-            --exclude README.md \
-            --verbose \
-            ./ ./public_html/
-          bye
-          EOF
+          # Install sshpass for password-based SSH
+          sudo apt-get install -y sshpass
+          # Upload ZIP
+          sshpass -p "$SSH_PASSWORD" scp -o StrictHostKeyChecking=no site.zip $SSH_USERNAME@aeecotrading.com:/home3/aeecotrading/
+          # Extract ZIP on server and overwrite public_html
+          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no $SSH_USERNAME@aeecotrading.com "unzip -o /home3/aeecotrading/site.zip -d /home3/aeecotrading/public_html/ && rm /home3/aeecotrading/site.zip"
