@@ -1,0 +1,26 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* --------------- Main Nav: Start --------------- */
+
+.main-nav {
+    &__ul {
+        display: flex;
+        @include flex-direction(column);
+
+        @include sm-min {
+            display: flex;
+            height: 100%;
+            // align-items: center;
+            column-gap: 2rem;
+            justify-content: flex-end;
+            // @include flex-direction(initial);
+        }
+
+        &__li {
+            &__a {}
+        }
+    }
+}
+
+/* --------------- Main Nav: End --------------- */

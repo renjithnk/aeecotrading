@@ -1,0 +1,246 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* 6. Forms: Start */
+
+/* Form Global Styles: Starts */
+.form {
+    margin: 0;
+    padding: 1.15rem;
+
+    @include md-min {
+        padding: 2rem;
+    }
+}
+
+.form__row {
+    display: grid;
+    grid-column-gap: .75rem;
+}
+
+.form__row-heading {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-size: .9rem;
+}
+
+.form__group {
+    display: grid;
+    grid-column-gap: 1rem;
+}
+
+.form__field-container {
+    margin-bottom: 1rem;
+}
+
+.form__input-text {
+    width: 100%;
+    height: 3rem;
+    line-height: 2.5rem;
+    padding: .5rem .65rem;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+    letter-spacing: .5px;
+    margin-bottom: .75rem;
+}
+
+// .form__input-text:focus {
+//     border: 1px solid red;
+// }
+
+.form__input-textarea {
+    border: 1px solid #fff;
+    margin-bottom: .5rem;
+    padding: .5rem;
+    font-family: inherit;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.form__input-select {
+    width: 100%;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    margin-bottom: .5rem;
+    padding: .5rem .65rem;
+    border: 1px solid #bfbcbc;
+    box-sizing: border-box;
+    border-radius: .25rem;
+}
+
+.form__input-file {
+    background: #fff;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    line-height: 2.5rem;
+    border: 1px solid #bfbcbc;
+    font-size: .75rem;
+    display: flex;
+    text-indent: .5rem;
+    border-radius: .25rem;
+}
+
+.form__textarea {
+    border: 1px solid #bfbcbc;
+    height: 100%;
+    width: 100%;
+}
+
+.form__label {
+    margin-bottom: .5rem;
+    display: flex;
+}
+
+.form__validation {
+    color: red;
+    margin-top: .35rem;
+    display: none;
+}
+
+.form__submit-wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    margin-bottom: .75rem;
+}
+
+input[type="date"] {
+    text-transform: uppercase;
+}
+
+input[type="submit"] {
+    padding: .75rem 1rem;
+    border: 0;
+    cursor: pointer;
+    color: white;
+    border: none;
+    line-height: 1;
+}
+
+.form-validation {
+    // padding: 0.5rem 1rem;
+    // border: 1px solid red;
+    font-weight: 600;
+    color: red;
+}
+
+.form-loading {
+    padding-bottom: .75rem;
+}
+
+/* Form Global Styles: Ends */
+
+// Custom Style: Start
+
+.aeeco-contact-form {
+    padding: 1rem;
+    background: #f5f5f5;
+
+    &__submit {
+        cursor: pointer;
+        border: 0;
+        font-family: inherit;
+    }
+
+    @include md-min {
+        padding: 1.5rem;
+    }
+
+    @include lg-min {
+        padding: 2.5rem;
+    }
+
+    &__row2 {
+        @include md-min {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media only screen and (min-width:576px) {
+    .aeeco-contact-form__row1 {
+        // grid-template-columns: 1fr 1fr;
+    }
+
+    .aeeco-contact-form__row1-col2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media only screen and (min-width:992px) {
+    .aeeco-contact-form__row3-col1 {
+        grid-template-columns: 25% 1fr;
+    }
+
+
+
+}
+
+// Custom Style: End
+
+
+/* Contact Us: Start */
+
+.validation {
+    transition: all 0.3s linear 0s;
+    position: relative;
+    top: -3px;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    color: #FD6F01;
+    font-size: 14px;
+}
+
+.show {
+    height: auto !important;
+    opacity: 1 !important;
+    top: 0;
+    display: block !important;
+}
+
+.loader {
+    width: 30px;
+    height: 30px;
+    border: 3px solid #efefef;
+    border-top: 3px solid #666;
+    border-radius: 50%;
+    animation: response-waiter 0.9s linear 0s infinite;
+    z-index: 100;
+    margin-left: 20px;
+    display: none;
+}
+
+.response {
+    transition: all 0.3s linear 0s;
+    position: relative;
+    top: -3px;
+    height: 0;
+    opacity: 0;
+    background: #fff;
+    color: #1a77ba;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 3px;
+    border: 2px solid #1a77ba;
+    display: none;
+}
+
+@keyframes response-waiter {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Contact Us: End */
+
+
+/* 6. Forms: End */

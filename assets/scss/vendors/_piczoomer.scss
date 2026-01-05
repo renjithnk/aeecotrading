@@ -1,0 +1,100 @@
+@use '../abstracts/mixins' as *;
+
+.piclist {
+    margin-top: 30px;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .65rem;
+
+    @include sm-min {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.piclist li {
+    display: inline-block;
+    background: white;
+    padding: .5rem;
+    cursor: pointer;
+}
+
+.piclist li img {
+    width: 100%;
+    height: auto;
+}
+
+/* custom style */
+.piczoomer-pic-wp,
+.piczoomer-zoom-wp {
+    border: 1px solid #fff;
+}
+
+.piczoomer {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+    width: auto;
+    height: auto;
+    background: #f3f3f3;
+    padding: 1rem;
+}
+
+.piczoomer-pic-wp {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #eee;
+    width: 100% !important;
+    height: auto !important;
+}
+
+.piczoomer-pic-wp:hover .piczoomer-cursor {
+    display: block;
+}
+
+.piczoomer-zoom-pic {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.piczoomer-pic {
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+}
+
+.piczoomer-zoom-wp {
+    display: none;
+    position: absolute;
+    z-index: 999;
+    overflow: hidden;
+    background: white;
+    border: 1rem solid #f1f1f1;
+    height: 100% !important;
+}
+
+.piczoomer-cursor {
+    display: none;
+    cursor: crosshair;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.picZoomCursor-ico {
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    background: url(../images/zoom-ico.png) left top no-repeat;
+}

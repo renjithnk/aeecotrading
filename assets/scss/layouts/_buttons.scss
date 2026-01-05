@@ -1,0 +1,56 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// @for $i from 1 through 3 {
+//     .btn#{$i} {
+//         background: $color1;
+//         padding: 1rem;
+//         width: fit-content;
+//         color: white;
+//         @include display-inline-flex;
+
+//         @if $i==2 {
+//             background: $color2;
+//         }
+//     }
+
+
+// }
+
+// Button: 1
+.btn1 {
+    padding: 1rem;
+    background: $color1;
+    color: white;
+    transition: all 0.15s linear 0s;
+    width: fit-content;
+    display: flex;
+
+    &:hover {
+        background: $color2;
+    }
+
+    @include md-min {
+        padding: 1.25rem 1.5rem;
+        font-size: 1.25rem;
+    }
+}
+
+// Button: 2
+.btn2 {
+    padding: 1rem;
+    background: $color2;
+    color: white;
+    transition: all 0.15s linear 0s;
+    width: fit-content;
+    display: flex;
+
+    &:hover {
+        background: $color1;
+    }
+
+    @include md-min {
+        padding: 1.25rem 1.5rem;
+        font-size: 1.25rem;
+    }
+}

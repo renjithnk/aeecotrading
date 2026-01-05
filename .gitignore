@@ -1,0 +1,8 @@
+/node_modules
+#deploy.php
+#deploy.log
+.htaccess
+
+# Edit or create .gitignore
+echo "deployer/" >> .gitignore
+echo "deploy.log" >> .gitignore

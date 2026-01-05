@@ -1,0 +1,49 @@
+$no-margin-padding: (
+    top,
+    right,
+    bottom,
+    left
+);
+
+/* No Padding: Start */
+@for $i from 1 through 4 {
+    .no-padding-#{nth($no-margin-padding, $i)} {
+        padding-#{nth($no-margin-padding, $i)}: 0;
+    }
+}
+
+/* No Padding: End */
+
+/* No Margin: Start */
+@for $i from 1 through 4 {
+    .no-margin-#{nth($no-margin-padding, $i)} {
+        margin-#{nth($no-margin-padding, $i)}: 0;
+    }
+}
+
+/* No Margin: End */
+
+/* Text Aligns: Start */
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Text Aligns: End */
+
+/* Text Truncator: Start */
+@mixin text-truncator($line-height, $maxlines) {
+    line-height: $line-height;
+    max-height: $line-height * $maxlines * 1rem;
+    overflow-y: hidden;
+}
+
+/* Text Truncator: End */

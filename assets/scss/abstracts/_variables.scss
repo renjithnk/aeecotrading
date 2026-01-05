@@ -1,0 +1,45 @@
+/* Color Scheme: Start */
+
+$color1: #6C6C8B;
+$color1-light-variation1: #67339e;
+$color2: #1BDF7D;
+$color2-light-variation1: #ffb300;
+$color3: #cecece;
+
+/* Color Scheme: End */
+
+/* Media Queries: Start */
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+/* Media Queries: End */
+
+/* Border Radius: Start */
+
+$border-radius: .25rem;
+
+/* Border Radius: End */
+
+/* Backgrounds: Start */
+
+$light-gray1: #e0e0e0;
+$light-gray2: #eeeeee;
+$light-gray3: #f5f5f5;
+
+/* Backgrounds: End */
+
+/* Content Section: Top & Bottom Padding: Start */
+
+$content-section-t-b-p: (
+    'xs': 1rem,
+    'sm': 1.5rem,
+    'md': 2rem,
+    'lg': 2.5rem,
+    'xl': 6rem
+);
+
+/* Content Section: Top & Bottom Padding: End */
