@@ -2,7 +2,7 @@
 #deploy.php
 #deploy.log
 .htaccess
-
+credentials.txt
 # Edit or create .gitignore
 echo "deployer/" >> .gitignore
 echo "deploy.log" >> .gitignore
