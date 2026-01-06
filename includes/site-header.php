@@ -31,7 +31,7 @@
     <!-- <p>Web Log Test: 2nd Update</p> -->
     <?php // if($page==='home') echo '<div class="site-preloader1"></div>' ?>
     <!-- Site Header: Start -->
-    <div class="site-header">
+    <div class="site-header" style="border:2px solid red">
         <div class="site-header__container container">
             <div class="site-header__wrapper">
                 <!-- Site Logo: Start  -->
