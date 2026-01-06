@@ -1,9 +1,9 @@
-name: Manual Deploy to BigRock
+name: Manual Deploy to Production (BigRock)
 
 on:
   workflow_dispatch:
     inputs:
-      confirm_deploy:
+      confirm:
         description: "Type DEPLOY to confirm production deployment"
         required: true
 
@@ -12,20 +12,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Validate confirmation
+      - name: Validate deployment confirmation
         run: |
-          if [ "${{ github.event.inputs.confirm_deploy }}" != "DEPLOY" ]; then
-            echo "Deployment cancelled. Confirmation text did not match."
+          if [ "${{ github.event.inputs.confirm }}" != "DEPLOY" ]; then
+            echo "❌ Deployment cancelled. Confirmation text did not match."
             exit 1
           fi
 
-      - name: Deploy using SSH and Git Pull
+      - name: Deploy to server via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: mam.com.sa
-          username: mamgroup
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host: aeecotrading.com
+          username: aeecotrading
           port: 22
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd public_html
-            git pull origin main
+            git pull
